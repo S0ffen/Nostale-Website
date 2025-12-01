@@ -1,0 +1,49 @@
+{
+  "Specialists": {
+    "Neffos": {
+      "Wild keeper": {
+        "image": "/WildKeeper.png",
+        "15": 219,
+        "16": 16,
+        "17": 22,
+        "18": 277,
+        "19": 92,
+        "20": 66
+      },
+      "Blaster": {
+        "image": "/Blaster.png",
+        "17": 361,
+        "18": 22,
+        "19": 117,
+        "20": 235
+      },
+      "Demon hunter": {
+        "image": "/DemonHunter.png",
+        "17": 58,
+        "18": 36,
+        "19": 94,
+        "20": 63
+      },
+      "Scout": {
+        "image": "/Scout.png",
+        "16": 0
+      }
+    },
+    "Koszatniczka": {
+      "Holy": {
+        "image": "/Holy.png",
+        "16": 185,
+        "17": 11,
+        "18": 22,
+        "19": 14,
+        "20": 325
+      }
+    }
+  },
+  "Tattos": {
+    "Koszatniczka": {
+      "image": "/",
+      "8": 23
+    }
+  }
+}
