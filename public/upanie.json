@@ -1,4 +1,61 @@
 {
+  "Fairy": {
+    "Neffos": {
+      "Fire": {
+        "image": "/Neffos.png",
+        "1": 100
+      },
+      "Water": {
+        "image": "/Neffos.png",
+        "1": 100
+      },
+      "Shadow": {
+        "image": "/Neffos.png",
+        "1": 100
+      },
+      "Light": {
+        "image": "/Neffos.png",
+        "1": 100
+      }
+    },
+    "Koszatniczka": {
+      "Fire": {
+        "image": "/Neffos.png",
+        "1": 100
+      },
+      "Water": {
+        "image": "/Neffos.png",
+        "1": 100
+      },
+      "Shadow": {
+        "image": "/Neffos.png",
+        "1": 100
+      },
+      "Light": {
+        "image": "/Neffos.png",
+        "1": 100
+      }
+    }
+  },
+
+  "Equipment": {
+    "Neffos": {
+      "First_weapon": {
+        "image": "/Neffos.png"
+      },
+      "Second_weapon": {
+        "image": "/Neffos.png"
+      }
+    },
+    "Koszatniczka": {
+      "First_weapon": {
+        "image": "/Neffos.png"
+      },
+      "Second_weapon": {
+        "image": "/Neffos.png"
+      }
+    }
+  },
   "Specialists": {
     "Neffos": {
       "Wild keeper": {
@@ -22,7 +79,7 @@
         "17": 58,
         "18": 36,
         "19": 94,
-        "20": 63
+        "20": 77
       },
       "Scout": {
         "image": "/Scout.png",
@@ -41,8 +98,22 @@
     }
   },
   "Tattos": {
+    "Neffos": {
+      "image": "/Holy.png",
+      "image1": "/Holy.png"
+    },
     "Koszatniczka": {
-      "image": "/",
+      "first": "/Holy.png",
+      "second": "/Holy.png"
+    }
+  },
+  "Passives": {
+    "Neffos": {
+      "image": "/Holy.png",
+      "8": 23
+    },
+    "Koszatniczka": {
+      "image": "/Holy.png",
       "8": 23
     }
   }

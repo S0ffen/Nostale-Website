@@ -1,3 +1,4 @@
+"use client";
 import data from "../public/upanie.json";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -10,13 +11,18 @@ type Entry = {
 
 type SpecialistsByCharacter = Record<string, Record<string, Entry>>;
 type TattosByCharacter = Record<string, Entry>;
+type FairyByCharacter = Record<string, Record<string, Entry>>;
+type EquipmentByCharacter = Record<string, Record<string, Entry>>;
 
 export default function HomePage() {
   const specialists = data.Specialists as SpecialistsByCharacter;
   const tattos = data.Tattos as TattosByCharacter;
+  const fairy = data.Fairy as FairyByCharacter;
+  const equipment = data.Equipment as EquipmentByCharacter;
 
   console.log("specialists", specialists);
   console.log("tattos", tattos);
+  console.log("data", data);
 
   const renderEntryCard = (name: string, info: Entry) => {
     const { image, ...rest } = info;
@@ -86,20 +92,62 @@ export default function HomePage() {
 
       {/* CONTENT */}
       <main className="px-6 py-8">
+        <Button
+          variant="secondary"
+          className="fixed top-18 right-12 z-50 cursor-pointer shadow"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Scroll to top"
+        >
+          ↑ Góraa
+        </Button>
         <div className="max-w-5xl mx-auto space-y-10">
           <h1 className="text-3xl font-semibold text-center">
             Nostale progress
           </h1>
           <div className="flex gap-4 justify-center">
             {Object.entries(data).map(([categories]) => (
-              <Button key={categories} variant="secondary">
+              <Button
+                key={categories}
+                variant="secondary"
+                className="cursor-pointer"
+                onClick={() =>
+                  document
+                    .getElementById(categories.toLowerCase())
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
                 {categories}
               </Button>
             ))}
           </div>
+          {/* EQUIPMENT */}
+          <section className="space-y-6" id="equipment">
+            <h2 className="text-2xl font-semibold">Equipment</h2>
+            {Object.entries(equipment).map(([characterName, eq]) => (
+              <div key={characterName} className="space-y-3">
+                <h3
+                  className="
+                    text-4xl font-extrabold
+                    text-transparent bg-clip-text
+                    bg-linear-to-r from-fuchsia-400 via-rose-500 to-amber-400
+                    animate-gradient-x
+                    drop-shadow-[0_0_10px_rgba(255,100,200,0.5)]
+                    text-center mb-6
+                  "
+                >
+                  {characterName}
+                </h3>
+                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                  {Object.entries(eq).map(([specName, info]) =>
+                    renderEntryCard(specName, info)
+                  )}
+                </div>
+              </div>
+            ))}
+          </section>
 
           {/* SPECIALISTS */}
-          <section className="space-y-6">
+          <section className="space-y-6" id="specialists">
             <h2 className="text-2xl font-semibold">Specialists</h2>
             {Object.entries(specialists).map(([characterName, specs]) => (
               <div key={characterName} className="space-y-3">
@@ -123,15 +171,55 @@ export default function HomePage() {
               </div>
             ))}
           </section>
-
+          {/* FAIRIES */}
+          <section className="space-y-6" id="fairy">
+            <h2 className="text-2xl font-semibold">Specialists</h2>
+            {Object.entries(fairy).map(([characterName, specs]) => (
+              <div key={characterName} className="space-y-3">
+                <h3
+                  className="
+                    text-4xl font-extrabold
+                    text-transparent bg-clip-text
+                    bg-linear-to-r from-fuchsia-400 via-rose-500 to-amber-400
+                    animate-gradient-x
+                    drop-shadow-[0_0_10px_rgba(255,100,200,0.5)]
+                    text-center mb-6
+                  "
+                >
+                  {characterName}
+                </h3>
+                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                  {Object.entries(specs).map(([specName, info]) =>
+                    renderEntryCard(specName, info)
+                  )}
+                </div>
+              </div>
+            ))}
+          </section>
           {/* TATTOS */}
-          <section className="space-y-6">
+          <section className="space-y-6" id="tattos">
             <h2 className="text-2xl font-semibold">Tattos</h2>
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              {Object.entries(tattos).map(([characterName, info]) =>
-                renderEntryCard(characterName, info)
-              )}
-            </div>
+
+            {Object.entries(tattos).map(([characterName, entry]) => (
+              <div key={characterName} className="space-y-3">
+                <h3
+                  className="
+                  text-4xl font-extrabold
+                  text-transparent bg-clip-text
+                  bg-linear-to-r from-fuchsia-400 via-rose-500 to-amber-400
+                  animate-gradient-x
+                  drop-shadow-[0_0_10px_rgba(255,100,200,0.5)]
+                  text-center mb-6
+                "
+                >
+                  {characterName}
+                </h3>
+
+                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                  {renderEntryCard("Tatto", entry)}
+                </div>
+              </div>
+            ))}
           </section>
         </div>
       </main>
