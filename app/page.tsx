@@ -1,8 +1,9 @@
-"use client";
 import data from "../public/upanie.json";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import ScrollToTopButton from "@/components/ui/common/ScrollToTopButton";
+import CategoryNav from "@/components/ui/common/CategoryNav";
 
 type Entry = {
   image?: string;
@@ -15,6 +16,8 @@ type FairyByCharacter = Record<string, Record<string, Entry>>;
 type EquipmentByCharacter = Record<string, Record<string, Entry>>;
 
 export default function HomePage() {
+  const categories = Object.keys(data); // np. ["Equipment","Specialists","Fairy","Tattos"]
+
   const specialists = data.Specialists as SpecialistsByCharacter;
   const tattos = data.Tattos as TattosByCharacter;
   const fairy = data.Fairy as FairyByCharacter;
@@ -23,7 +26,11 @@ export default function HomePage() {
   console.log("specialists", specialists);
   console.log("tattos", tattos);
   console.log("data", data);
+  console.log(categories);
 
+  //"Holy": { "image": "/Holy.png", "16": 185, "17": 11, "18": 22, "19": 14, "20": 325 }
+  // name: string to będzie klucz obiektu, czyli tutaj "Holy"
+  //info: Entry to będzie wartość pod tym kluczem, czyli cały obiekt: image,16,17,18,19,20
   const renderEntryCard = (name: string, info: Entry) => {
     const { image, ...rest } = info;
 
@@ -92,33 +99,13 @@ export default function HomePage() {
 
       {/* CONTENT */}
       <main className="px-6 py-8">
-        <Button
-          variant="secondary"
-          className="fixed top-18 right-12 z-50 cursor-pointer shadow"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label="Scroll to top"
-        >
-          ↑ Góraa
-        </Button>
-        <div className="max-w-5xl mx-auto space-y-10">
+        <ScrollToTopButton />
+        <div className="w-7/12 mx-auto space-y-10">
           <h1 className="text-3xl font-semibold text-center">
             Nostale progress
           </h1>
           <div className="flex gap-4 justify-center">
-            {Object.entries(data).map(([categories]) => (
-              <Button
-                key={categories}
-                variant="secondary"
-                className="cursor-pointer"
-                onClick={() =>
-                  document
-                    .getElementById(categories.toLowerCase())
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                {categories}
-              </Button>
-            ))}
+            <CategoryNav categories={categories} />
           </div>
           {/* EQUIPMENT */}
           <section className="space-y-6" id="equipment">
@@ -137,7 +124,7 @@ export default function HomePage() {
                 >
                   {characterName}
                 </h3>
-                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <div className="flex flex-wrap gap-4 justify-center">
                   {Object.entries(eq).map(([specName, info]) =>
                     renderEntryCard(specName, info)
                   )}
@@ -163,7 +150,7 @@ export default function HomePage() {
                 >
                   {characterName}
                 </h3>
-                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <div className="flex flex-wrap gap-4 justify-center">
                   {Object.entries(specs).map(([specName, info]) =>
                     renderEntryCard(specName, info)
                   )}
@@ -188,7 +175,7 @@ export default function HomePage() {
                 >
                   {characterName}
                 </h3>
-                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <div className="flex flex-wrap gap-4 justify-center">
                   {Object.entries(specs).map(([specName, info]) =>
                     renderEntryCard(specName, info)
                   )}
@@ -215,7 +202,7 @@ export default function HomePage() {
                   {characterName}
                 </h3>
 
-                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <div className="flex flex-wrap gap-4 justify-center">
                   {renderEntryCard("Tatto", entry)}
                 </div>
               </div>

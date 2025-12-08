@@ -79,7 +79,7 @@
         "17": 58,
         "18": 36,
         "19": 94,
-        "20": 77
+        "20": 155
       },
       "Scout": {
         "image": "/Scout.png",
@@ -108,6 +108,16 @@
     }
   },
   "Passives": {
+    "Neffos": {
+      "image": "/Holy.png",
+      "8": 23
+    },
+    "Koszatniczka": {
+      "image": "/Holy.png",
+      "8": 23
+    }
+  },
+  "Todo": {
     "Neffos": {
       "image": "/Holy.png",
       "8": 23
