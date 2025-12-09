@@ -1,10 +1,9 @@
 import data from "../public/upanie.json";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import ScrollToTopButton from "@/components/ui/common/ScrollToTopButton";
 import CategoryNav from "@/components/ui/common/CategoryNav";
-
+import ContentSection from "@/components/ui/common/ContentSection";
 type Entry = {
   image?: string;
   [level: string]: number | string | undefined;
@@ -103,6 +102,8 @@ export default function HomePage() {
         <div className="w-7/12 mx-auto space-y-10">
           <h1 className="text-3xl font-semibold text-center">
             Nostale progress
+            <br />
+            Last Update: 09-12-2025
           </h1>
           <div className="flex gap-4 justify-center">
             <CategoryNav categories={categories} />
@@ -110,6 +111,7 @@ export default function HomePage() {
           {/* EQUIPMENT */}
           <section className="space-y-6" id="equipment">
             <h2 className="text-2xl font-semibold">Equipment</h2>
+
             {Object.entries(equipment).map(([characterName, eq]) => (
               <div key={characterName} className="space-y-3">
                 <h3
@@ -124,10 +126,15 @@ export default function HomePage() {
                 >
                   {characterName}
                 </h3>
+
                 <div className="flex flex-wrap gap-4 justify-center">
-                  {Object.entries(eq).map(([specName, info]) =>
-                    renderEntryCard(specName, info)
-                  )}
+                  {Object.entries(eq).map(([itemName, entry]) => (
+                    <ContentSection
+                      key={itemName}
+                      name={itemName}
+                      info={entry}
+                    />
+                  ))}
                 </div>
               </div>
             ))}
@@ -160,7 +167,7 @@ export default function HomePage() {
           </section>
           {/* FAIRIES */}
           <section className="space-y-6" id="fairy">
-            <h2 className="text-2xl font-semibold">Specialists</h2>
+            <h2 className="text-2xl font-semibold">FAIRIES</h2>
             {Object.entries(fairy).map(([characterName, specs]) => (
               <div key={characterName} className="space-y-3">
                 <h3
@@ -176,9 +183,13 @@ export default function HomePage() {
                   {characterName}
                 </h3>
                 <div className="flex flex-wrap gap-4 justify-center">
-                  {Object.entries(specs).map(([specName, info]) =>
-                    renderEntryCard(specName, info)
-                  )}
+                  {Object.entries(specs).map(([specName, info]) => (
+                    <ContentSection
+                      key={specName}
+                      name={specName}
+                      info={info}
+                    />
+                  ))}
                 </div>
               </div>
             ))}

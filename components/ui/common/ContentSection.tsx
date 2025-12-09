@@ -39,12 +39,12 @@ export default function ContentCard({
       >
         <CardHeader className="p-3">
           {image && (
-            <div className="relative mb-2 overflow-hidden rounded-xl">
+            <div className="relative mb-2 overflow-hidden rounded-xl ">
               {/* klik w obrazek otwiera modal */}
               <button
                 type="button"
                 onClick={() => setOpen(true)}
-                className="block w-full"
+                className="block w-full "
                 aria-label={`Powiększ ${name}`}
               >
                 <Image
@@ -98,7 +98,7 @@ export default function ContentCard({
           onClick={() => setOpen(false)}
         >
           <div
-            className="relative w-full max-w-6xl"
+            className="relative w-full max-w-6xl animate-in fade-in-0 zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             <button

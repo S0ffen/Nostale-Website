@@ -2,19 +2,19 @@
   "Fairy": {
     "Neffos": {
       "Fire": {
-        "image": "/Neffos.png",
+        "image": "/FairyNeffosFire.png",
         "1": 100
       },
       "Water": {
-        "image": "/Neffos.png",
+        "image": "/FairyNeffosWater.png",
         "1": 100
       },
       "Shadow": {
-        "image": "/Neffos.png",
+        "image": "/FairyNeffosShadow.png",
         "1": 100
       },
       "Light": {
-        "image": "/Neffos.png",
+        "image": "/FairyNeffosLight1.png",
         "1": 100
       }
     },
@@ -40,19 +40,20 @@
 
   "Equipment": {
     "Neffos": {
-      "First_weapon": {
-        "image": "/Neffos.png"
+      "Weapons": {
+        "image": "/EqNeffosMain.png",
+        "10": 150
       },
-      "Second_weapon": {
-        "image": "/Neffos.png"
+      "Second_Weapon": {
+        "image": "/EqNeffosSecond.png"
       }
     },
     "Koszatniczka": {
       "First_weapon": {
-        "image": "/Neffos.png"
+        "image": "/EqKoszatniczkaMain.png"
       },
       "Second_weapon": {
-        "image": "/Neffos.png"
+        "image": "/EqKoszatniczkaSecond.png"
       }
     }
   },
